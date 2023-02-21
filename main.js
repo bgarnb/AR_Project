@@ -1,4 +1,4 @@
-import {loadGLTF, loadAudio, loadVideo} from "../../libs/loader.js";
+import {loadGLTF, loadAudio, loadVideo} from "./libs/loader.js";
 const THREE = window.MINDAR.IMAGE.THREE;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //initiate the AR 3 object
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: '../../assets/targets/targets.mind'
+      imageTargetSrc: './assets/targets/targets.mind'
     });
     const {renderer, scene, camera} = mindarThree;
 
@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    const raccoon = await loadGLTF('../../assets/models/musicband-raccoon/scene.gltf');
+    const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
     raccoon.scene.scale.set(0.1, 0.1, 0.1);
     raccoon.scene.position.set(0, -0.4, 0);
 
-    const bear = await loadGLTF('../../assets/models/musicband-bear/scene.gltf');
+    const bear = await loadGLTF('./assets/models/musicband-bear/scene.gltf');
     bear.scene.scale.set(0.1, 0.1, 0.1);
     bear.scene.position.set(0, -0.4, 0);
 
-    const video = await loadVideo("../../assets/videos/sintel/sintel.mp4");
+    const video = await loadVideo("./assets/videos/sintel/sintel.mp4");
     const texture = new THREE.VideoTexture(video);
     const geometry = new THREE.PlaneGeometry(1, 204/480);
     const material = new THREE.MeshBasicMaterial({map: texture});
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const raccoonAnchor = mindarThree.addAnchor(0);
     raccoonAnchor.group.add(raccoon.scene);
 
-    const audioClip1 = await loadAudio('../../assets/sounds/musicband-background.mp3');
+    const audioClip1 = await loadAudio('./assets/sounds/musicband-background.mp3');
 
     const listener1 = new THREE.AudioListener();
     camera.add(listener1);
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bearAnchor = mindarThree.addAnchor(1);
     bearAnchor.group.add(bear.scene);
 
-    const audioClip2 = await loadAudio('../../assets/sounds/musicband-background.mp3');
+    const audioClip2 = await loadAudio('./assets/sounds/musicband-background.mp3');
 
     const listener2 = new THREE.AudioListener();
     camera.add(listener2);
