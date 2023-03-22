@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const plane = new THREE.Mesh(geometry, material);
 
     //first digital content (3D model with audio)
+    //cooment
 
     const raccoonAnchor = mindarThree.addAnchor(0);
     raccoonAnchor.group.add(raccoon.scene);
