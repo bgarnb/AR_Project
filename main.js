@@ -78,6 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // third digital content (video)
+    
+    const video = await loadVideo("./assets/videos/Softbox Info.mp4");
+    const texture = new THREE.VideoTexture(video);
+    const geometry = new THREE.PlaneGeometry(1, 204/480);
+    const material = new THREE.MeshBasicMaterial({map: texture});
+    const plane = new THREE.Mesh(geometry, material);
+   
     const anchor = mindarThree.addAnchor(2);
     anchor.group.add(plane);
 
