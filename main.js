@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     raccoon.scene.position.set(0, -0.4, 0);
 
     //const bear = await loadGLTF('./assets//musicband-bear/scene.gltf');
-    bear.scene.scale.set(0.1, 0.1, 0.1);
-    bear.scene.position.set(0, -0.4, 0);//
+    //bear.scene.scale.set(0.1, 0.1, 0.1);
+    //bear.scene.position.set(0, -0.4, 0);
 
     const video = await loadVideo("./assets/videos/Softbox Info.mp4");
     const texture = new THREE.VideoTexture(video);
