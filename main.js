@@ -14,13 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
     scene.add(light);
 
-    //const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
-    //raccoon.scene.scale.set(0.1, 0.1, 0.1);
-    //raccoon.scene.position.set(0, -0.4, 0);
-
-    //const bear = await loadGLTF('./assets//musicband-bear/scene.gltf');
-    //bear.scene.scale.set(0.1, 0.1, 0.1);
-    //bear.scene.position.set(0, -0.4, 0);
+    const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
+    raccoon.scene.scale.set(0.1, 0.1, 0.1);
+    raccoon.scene.position.set(0, -0.4, 0);
 
     const video = await loadVideo("./assets/videos/Softbox Info.mp4");
     const texture = new THREE.VideoTexture(video);
@@ -28,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const material = new THREE.MeshBasicMaterial({map: texture});
     const plane = new THREE.Mesh(geometry, material);
 
+    const bear = await loadGLTF('./assets//musicband-bear/scene.gltf');
+    bear.scene.scale.set(0.1, 0.1, 0.1);
+    bear.scene.position.set(0, -0.4, 0);
+
+    
     //first digital content (3D model with audio)
 
     const raccoonAnchor = mindarThree.addAnchor(0);
