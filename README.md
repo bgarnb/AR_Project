@@ -69,4 +69,4 @@ py -3 -m http.server για να ξεκινήσει να τρέχει ο local s
   
   ## Τα παραδοτέα περιγράφονται στα issues του αποθετηρίου όπως και ο τρόπος συνεργασίας
   
-  #[Αξιολόγηση του μαθήματος](https://forms.gle/n9RFkkegsuRtfTRn6)
+  # [Αξιολόγηση του μαθήματος](https://forms.gle/n9RFkkegsuRtfTRn6)
