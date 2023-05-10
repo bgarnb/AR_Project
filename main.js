@@ -6,97 +6,71 @@ document.addEventListener('DOMContentLoaded', () => {
     //initiate the AR 3 object
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/cameraTarget.mind'
+      imageTargetSrc: './assets/targets/Alltargets.mind'
     });
     const {renderer, scene, camera} = mindarThree;
 
-//light is needed when we use 3D objects
-    const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
-    scene.add(light);
 
-    const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
-    raccoon.scene.scale.set(0.1, 0.1, 0.1);
-    raccoon.scene.position.set(0, -0.4, 0);
-
-    const video = await loadVideo("./assets/videos/Softbox Info.mp4");
-    const texture = new THREE.VideoTexture(video);
-    const geometry = new THREE.PlaneGeometry(1, 204/480);
-    const material = new THREE.MeshBasicMaterial({map: texture});
-    const plane = new THREE.Mesh(geometry, material);
-
-    const bear = await loadGLTF('./assets//musicband-bear/scene.gltf');
-    bear.scene.scale.set(0.1, 0.1, 0.1);
-    bear.scene.position.set(0, -0.4, 0);
-
-    
-    //first digital content (3D model with audio)
-
-    const raccoonAnchor = mindarThree.addAnchor(0);
-    raccoonAnchor.group.add(raccoon.scene);
-
-    const audioClip1 = await loadAudio('./assets/sounds/musicband-background.mp3');
-
-    const listener1 = new THREE.AudioListener();
-    camera.add(listener1);
-
-    const audio1 = new THREE.PositionalAudio(listener1);
-    raccoonAnchor.group.add(audio1);
-
-    audio1.setBuffer(audioClip1);
-    audio1.setRefDistance(100);
-    audio1.setLoop(true);
-
-    raccoonAnchor.onTargetFound = () => {
-      audio1.play();
-    }
-    raccoonAnchor.onTargetLost = () => {
-      audio1.pause();
-    }
-
-    //second digital content (3D model with audio)
-
-    const bearAnchor = mindarThree.addAnchor(1);
-    bearAnchor.group.add(bear.scene);
-
-    const audioClip2 = await loadAudio('./assets/sounds/musicband-background.mp3');
-
-    const listener2 = new THREE.AudioListener();
-    camera.add(listener2);
-
-    const audio2 = new THREE.PositionalAudio(listener2);
-    bearAnchor.group.add(audio2);
-
-    audio2.setBuffer(audioClip2);
-    audio2.setRefDistance(100);
-    audio2.setLoop(true);
-
-    bearAnchor.onTargetFound = () => {
-      audio2.play();
-    }
-    bearAnchor.onTargetLost = () => {
-      audio2.pause();
-    }
+    const video1 = await loadVideo("./assets/videos/FirstVideo.mp4");
+    const texture1 = new THREE.VideoTexture(video);
+    const geometry1 = new THREE.PlaneGeometry(1, 204/480);
+    const material1 = new THREE.MeshBasicMaterial({map: texture});
+    const plane1 = new THREE.Mesh(geometry, material);
+      
+    const video2 = await loadVideo("./assets/videos/SoftboxInfo.mp4");
+    const texture2 = new THREE.VideoTexture(video);
+    const geometry2 = new THREE.PlaneGeometry(1, 204/480);
+    const material2 = new THREE.MeshBasicMaterial({map: texture});
+    const plane2 = new THREE.Mesh(geometry, material);
+      
+    const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
+    const texture3 = new THREE.VideoTexture(video);
+    const geometry3 = new THREE.PlaneGeometry(1, 204/480);
+    const material3 = new THREE.MeshBasicMaterial({map: texture});
+    const plane3 = new THREE.Mesh(geometry, material);
+      
+      
 
     // third digital content (video)
-    
-    const video = await loadVideo("./assets/videos/Softbox Info.mp4");
-    const texture = new THREE.VideoTexture(video);
-    const geometry = new THREE.PlaneGeometry(1, 204/480);
-    const material = new THREE.MeshBasicMaterial({map: texture});
-    const plane = new THREE.Mesh(geometry, material);
-   
-    const anchor = mindarThree.addAnchor(2);
-    anchor.group.add(plane);
+    const anchor1 = mindarThree.addAnchor(0);
+    anchor1.group.add(plane1);
 
-    anchor.onTargetFound = () => {
-      video.play();
+    anchor1.onTargetFound = () => {
+      video1.play();
     }
-    anchor.onTargetLost = () => {
-      video.pause();
+    anchor1.onTargetLost = () => {
+      video1.pause();
     }
-    video.addEventListener( 'play', () => {
-      video.currentTime = 6;
+    video1.addEventListener( 'play', () => {
+      video1.currentTime = 6;
     });
+      
+    const anchor2 = mindarThree.addAnchor(1);
+    anchor2.group.add(plane2);
+
+    anchor2.onTargetFound = () => {
+      video2.play();
+    }
+    anchor2.onTargetLost = () => {
+      video2.pause();
+    }
+    video2.addEventListener( 'play', () => {
+      video2.currentTime = 6;
+    });
+      
+    const anchor3 = mindarThree.addAnchor(2);
+    anchor3.group.add(plane3);
+
+    anchor3.onTargetFound = () => {
+      video3.play();
+    }
+    anchor3.onTargetLost = () => {
+      video3.pause();
+    }
+    video3.addEventListener( 'play', () => {
+      video3.currentTime = 6;
+    });
+      
 //start the experience
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
@@ -110,3 +84,4 @@ document.addEventListener('DOMContentLoaded', () => {
   //document.body.appendChild(startButton);
   start();
 });
+
