@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
       
     const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
-    const texture3 = new THREE.VideoTexture(video);
+    const texture3 = new THREE.VideoTexture(video3);
     const geometry3 = new THREE.PlaneGeometry(1, 204/480);
-    const material3 = new THREE.MeshBasicMaterial({map: texture});
-    const plane3 = new THREE.Mesh(geometry, material);
+    const material3 = new THREE.MeshBasicMaterial({map: texture3});
+    const plane3 = new THREE.Mesh(geometry3, material3);
       
       
           
