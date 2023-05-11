@@ -12,26 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const video1 = await loadVideo("./assets/videos/FirstVideo.mp4");
-    const texture1 = new THREE.VideoTexture(video);
+    const texture1 = new THREE.VideoTexture(video1);
     const geometry1 = new THREE.PlaneGeometry(1, 204/480);
-    const material1 = new THREE.MeshBasicMaterial({map: texture});
-    const plane1 = new THREE.Mesh(geometry, material);
-      
-    const video2 = await loadVideo("./assets/videos/SoftboxInfo.mp4");
-    const texture2 = new THREE.VideoTexture(video);
-    const geometry2 = new THREE.PlaneGeometry(1, 204/480);
-    const material2 = new THREE.MeshBasicMaterial({map: texture});
-    const plane2 = new THREE.Mesh(geometry, material);
-      
-    const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
-    const texture3 = new THREE.VideoTexture(video);
-    const geometry3 = new THREE.PlaneGeometry(1, 204/480);
-    const material3 = new THREE.MeshBasicMaterial({map: texture});
-    const plane3 = new THREE.Mesh(geometry, material);
-      
-      
-
-    // third digital content (video)
+    const material1 = new THREE.MeshBasicMaterial({map: texture1});
+    const plane1 = new THREE.Mesh(geometry1, material1);
+    
     const anchor1 = mindarThree.addAnchor(0);
     anchor1.group.add(plane1);
 
@@ -45,9 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
       video1.currentTime = 6;
     });
       
+    const video2 = await loadVideo("./assets/videos/SoftboxInfo.mp4");
+    const texture2 = new THREE.VideoTexture(video2);
+    const geometry2 = new THREE.PlaneGeometry(1, 204/480);
+    const material2 = new THREE.MeshBasicMaterial({map: texture2});
+    const plane2 = new THREE.Mesh(geometry2, material2);
+    
     const anchor2 = mindarThree.addAnchor(1);
+    
     anchor2.group.add(plane2);
-
     anchor2.onTargetFound = () => {
       video2.play();
     }
@@ -58,18 +49,26 @@ document.addEventListener('DOMContentLoaded', () => {
       video2.currentTime = 6;
     });
       
-    const anchor3 = mindarThree.addAnchor(2);
-    anchor3.group.add(plane3);
+    //const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
+    //const texture3 = new THREE.VideoTexture(video);
+    //const geometry3 = new THREE.PlaneGeometry(1, 204/480);
+    //const material3 = new THREE.MeshBasicMaterial({map: texture});
+    //const plane3 = new THREE.Mesh(geometry, material);
+      
+      
+          
+    //const anchor3 = mindarThree.addAnchor(2);
+    //anchor3.group.add(plane3);
 
-    anchor3.onTargetFound = () => {
-      video3.play();
-    }
-    anchor3.onTargetLost = () => {
-      video3.pause();
-    }
-    video3.addEventListener( 'play', () => {
-      video3.currentTime = 6;
-    });
+    //anchor3.onTargetFound = () => {
+      //video3.play();
+    //}
+    //anchor3.onTargetLost = () => {
+      //video3.pause();
+   // }
+    //video3.addEventListener( 'play', () => {
+     // video3.currentTime = 6;
+    //});
       
 //start the experience
     await mindarThree.start();
