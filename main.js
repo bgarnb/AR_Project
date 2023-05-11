@@ -49,26 +49,26 @@ document.addEventListener('DOMContentLoaded', () => {
       video2.currentTime = 6;
     });
       
-    //const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
-    //const texture3 = new THREE.VideoTexture(video);
-    //const geometry3 = new THREE.PlaneGeometry(1, 204/480);
-    //const material3 = new THREE.MeshBasicMaterial({map: texture});
-    //const plane3 = new THREE.Mesh(geometry, material);
+    const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
+    const texture3 = new THREE.VideoTexture(video);
+    const geometry3 = new THREE.PlaneGeometry(1, 204/480);
+    const material3 = new THREE.MeshBasicMaterial({map: texture});
+    const plane3 = new THREE.Mesh(geometry, material);
       
       
           
-    //const anchor3 = mindarThree.addAnchor(2);
-    //anchor3.group.add(plane3);
+    const anchor3 = mindarThree.addAnchor(2);
+    anchor3.group.add(plane3);
 
-    //anchor3.onTargetFound = () => {
-      //video3.play();
-    //}
-    //anchor3.onTargetLost = () => {
-      //video3.pause();
-   // }
-    //video3.addEventListener( 'play', () => {
-     // video3.currentTime = 6;
-    //});
+    anchor3.onTargetFound = () => {
+      video3.play();
+    }
+    anchor3.onTargetLost = () => {
+      video3.pause();
+    }
+    video3.addEventListener( 'play', () => {
+     video3.currentTime = 6;
+    });
       
 //start the experience
     await mindarThree.start();
