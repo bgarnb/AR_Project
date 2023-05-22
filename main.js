@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       video1.pause();
     }
     video1.addEventListener( 'play', () => {
-      video1.currentTime = 6;
+      video1.currentTime = 32;
     });
       
     const video2 = await loadVideo("./assets/videos/SoftboxInfo.mp4");
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       video2.pause();
     }
     video2.addEventListener( 'play', () => {
-      video2.currentTime = 6;
+      video2.currentTime = 19;
     });
       
     const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
