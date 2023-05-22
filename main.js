@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       video2.pause();
     }
     video2.addEventListener( 'play', () => {
-      video2.currentTime = 19;
+      video2.currentTime = 6;
     });
       
     const video3 = await loadVideo("./assets/videos/BackdropInfo.mp4");
