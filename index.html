@@ -1,12 +1,68 @@
 <html>
   <head>
+    <!-- Meta tag for responsive design to ensure the AR experience adapts to various screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include the MindAR.js library to handle AR features -->
     <script src="./libs/mindar/mindar-image-three.prod.js"></script>
+    
+    <!-- Link to the main JavaScript file, where the AR experience and button functionality are implemented -->
     <script src="./main.js" type="module"></script>
+    
     <style>
-      html, body {position: relative; margin: 0; width: 100%; height: 100%; overflow: hidden}
+      /* Global styling to ensure the body and html take up the full screen and prevent overflow */
+      html, body {
+        position: relative;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Header section containing the title and buttons, centered at the top of the page */
+      #header {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%); /* Horizontally center the header */
+        text-align: center;
+        z-index: 10; /* Ensure the header stays above other content (such as the AR view) */
+      }
+
+      /* Styling for the heading text */
+      h1 {
+        margin: 0;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Styling for the button container */
+      #buttons {
+        margin-top: 10px; /* Space between the heading and the buttons */
+      }
+
+      /* Button styling: consistent size and appearance */
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
     </style>
   </head>
+  
   <body>
+    <!-- Header section with the title and buttons -->
+    <div id="header">
+      <h1>Let the game begin</h1> <!-- Title displayed in the center -->
+      <div id="buttons">
+        <!-- Start and Stop buttons -->
+        <button id="startButton">Start</button> <!-- Start button starts the AR experience -->
+        <button id="stopButton" disabled>Stop</button> <!-- Stop button stops the AR experience (initially disabled) -->
+      </div>
+    </div>
   </body>
 </html>
